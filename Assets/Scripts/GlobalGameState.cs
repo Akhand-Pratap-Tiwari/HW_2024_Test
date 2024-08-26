@@ -5,12 +5,15 @@ using System.Net;
 using UnityEngine;
 using UnityEngine.Playables;
 
+// For player speed
+// Default speed is given in JSON
 [System.Serializable]
 public class PlayerData
 {
     public float speed;
 }
 
+// Platform lifetime details
 [System.Serializable]
 public class PulpitData
 {
@@ -19,6 +22,8 @@ public class PulpitData
     public float pulpit_spawn_time;
 }
 
+// Combining both above class into a
+// single container class
 [System.Serializable]
 public class GameData
 {
@@ -29,9 +34,15 @@ public class GameData
 public class GlobalGameState : MonoBehaviour
 {
     public int score = 0;
+
+    // This will hold last 2 platform positions 
+    // This will be used to avoid spawning in same place
     public Queue<Vector3> positions = new Queue<Vector3>();
+
+    // This will contain the imported JSON game data
     public GameData game_data;
-    // Start is called before the first frame update
+
+    // Will be used to read and load game data into game_data variable
     void loadGameData() {
         string path = Path.Combine("Assets/Resources/doofusDiary.json");
         print(path);
@@ -58,14 +69,10 @@ public class GlobalGameState : MonoBehaviour
             print("Cannot find gameData.json file!");
         }
     }
+
+    // Once the game starts first thing is to load the game data.
     void Start()
     {
         loadGameData();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
