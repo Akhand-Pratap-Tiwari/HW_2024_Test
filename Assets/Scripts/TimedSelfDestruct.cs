@@ -17,7 +17,10 @@ public class TimedSelfDestruct : MonoBehaviour
     {
         gameState = GameObject.FindWithTag("GlobalGameState").GetComponent<GlobalGameState>();
         gameState.positions.Enqueue(gameObject.transform.position);
-    
+        float minTime = gameState.game_data.pulpit_data.min_pulpit_destroy_time;
+        float maxTime = gameState.game_data.pulpit_data.max_pulpit_destroy_time;
+        lifeTime = UnityEngine.Random.Range(minTime, maxTime);
+        reproduceTime = lifeTime-gameState.game_data.pulpit_data.pulpit_spawn_time;
     }
 
     // Update is called once per frame
