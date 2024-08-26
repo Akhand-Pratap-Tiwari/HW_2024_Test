@@ -31,8 +31,8 @@ public class GameData
 public class GlobalGameState : MonoBehaviour
 {
 
-    public GameOverScreen gameOverScreen;
-    
+    public MidGamePause midGamePause;
+
     public int score = 0;
 
     // This will hold last 2 platform positions 
@@ -80,7 +80,7 @@ public class GlobalGameState : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            gameOverScreen.Setup(score);
+            midGamePause.Setup(score);
         }
     }
 }
