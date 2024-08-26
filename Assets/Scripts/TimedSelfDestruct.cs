@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static Unity.VisualScripting.Metadata;
 
 public class TimedSelfDestruct : MonoBehaviour
 {
@@ -20,18 +22,19 @@ public class TimedSelfDestruct : MonoBehaviour
         float minTime = gameState.game_data.pulpit_data.min_pulpit_destroy_time;
         float maxTime = gameState.game_data.pulpit_data.max_pulpit_destroy_time;
         lifeTime = UnityEngine.Random.Range(minTime, maxTime);
-        reproduceTime = lifeTime-gameState.game_data.pulpit_data.pulpit_spawn_time;
+        reproduceTime = lifeTime - gameState.game_data.pulpit_data.pulpit_spawn_time;
     }
 
     // Update is called once per frame
     void Update()
     {
         //print(lifeTime);
-        
+        TextMeshPro child = GetComponentInChildren<TextMeshPro>();
+        child.text = lifeTime.ToString();
         if (!hasReproduced && lifeTime <= reproduceTime && lifeTime > 0.0f)
         {
             reproduce();
-            hasReproduced=true;
+            hasReproduced = true;
         }
         else if (lifeTime <= 0.0f)
         {
@@ -58,7 +61,8 @@ public class TimedSelfDestruct : MonoBehaviour
         Vector3 newPos;
         int deltaX = 0;
         int deltaZ = 0;
-        do {
+        do
+        {
             int[] deltas = getRandomDeltas();
             deltaX = deltas[0] * 9;
             deltaZ = deltas[1] * 9;
@@ -68,7 +72,7 @@ public class TimedSelfDestruct : MonoBehaviour
     }
     void timerEnded()
     {
-        if(gameState.positions.Count > 2) gameState.positions.Dequeue();
+        if (gameState.positions.Count > 2) gameState.positions.Dequeue();
         Destroy(gameObject);
     }
 }
