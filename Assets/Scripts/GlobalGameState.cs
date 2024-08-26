@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using UnityEngine;
-using UnityEngine.Playables;
 
 // For player speed
 // Default speed is given in JSON

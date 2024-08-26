@@ -1,12 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static Unity.VisualScripting.Metadata;
+
 
 public class TimedSelfDestruct : MonoBehaviour
 {
@@ -134,8 +128,10 @@ public class TimedSelfDestruct : MonoBehaviour
     // from the GlobalGameState as now those platforms no longer exits
     void timerEnded()
     {
-
+        // Removing the old objects
         if (gameState.positions.Count > 2) gameState.positions.Dequeue();
+        
+        // Destroying this one
         Destroy(gameObject);
     }
 }
