@@ -8,4 +8,9 @@ public class StartGame : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void QuitGameButton()
+    {
+        Application.Quit();
+    }
 }

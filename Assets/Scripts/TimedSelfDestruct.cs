@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -50,7 +51,7 @@ public class TimedSelfDestruct : MonoBehaviour
     void Update()
     {
         // Update the Display to show remaining time
-        timerDisplay.text = lifeTime.ToString();
+        timerDisplay.text = Math.Round(lifeTime, 2).ToString();
         
         // If the current platform has not yet reproduced and
         // it has entered in reproducing time and

@@ -24,8 +24,13 @@ public class GameOverScreen : MonoBehaviour
     }
 
     // This will navigate to main menu
-    public void ExitButton()
+    public void MainMenuButton()
     {
         SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public void QuitGameButton()
+    {
+        Application.Quit();
     }
 }
