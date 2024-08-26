@@ -51,7 +51,14 @@ public class TopDownMovement : MonoBehaviour
         {
             Destroy(other.gameObject);
             gameState.score++;
-            scoreText.text = "Score: " + (gameState.score - 1).ToString();
+            if(gameState.score >= 50)
+            {
+                scoreText.text = "Challenge Completed!\nScore: " + (gameState.score - 1).ToString();
+            }
+            else
+            {
+                scoreText.text = "Score: " + (gameState.score - 1).ToString();
+            }
         }
 
     }
