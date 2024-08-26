@@ -13,7 +13,7 @@ public class TimedSelfDestruct : MonoBehaviour
     private float lifeTime = 10f;
     private float reproduceTime = 4f;
     private bool hasReproduced = false;
-    private GlobalGameState gameState;
+    public GlobalGameState gameState;
     private TextMeshPro timerDisplay;
 
     void Start()
