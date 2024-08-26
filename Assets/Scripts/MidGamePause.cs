@@ -29,11 +29,13 @@ public class MidGamePause : MonoBehaviour
         SceneManager.LoadScene("MainMenuScene");
     }
 
+    // To resume the game
     public void ResumeButton()
     {
         gameObject.SetActive(false);
     }
 
+    // To quit the game
     public void QuitGameButton()
     {
         Application.Quit();
