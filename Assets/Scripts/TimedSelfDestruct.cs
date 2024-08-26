@@ -53,6 +53,15 @@ public class TimedSelfDestruct : MonoBehaviour
         // Update the Display to show remaining time
         timerDisplay.text = Math.Round(lifeTime, 2).ToString();
         
+        // This will cause platform to shrink at rapid
+        // rate rather than vanishing when the life time
+        // is less than 0.94 (this makes it challenging)
+        if(lifeTime < 0.94)
+        {
+            Vector3 scale = gameObject.transform.localScale;
+            if(scale.x > 0 && scale.y > 0 && scale.z > 0) 
+                gameObject.transform.localScale -= new Vector3(0.01f + lifeTime/20.0f, 0, 0.01f + lifeTime/20.0f);
+        }
         // If the current platform has not yet reproduced and
         // it has entered in reproducing time and
         // lifeTime is not zero then reproduce and set
