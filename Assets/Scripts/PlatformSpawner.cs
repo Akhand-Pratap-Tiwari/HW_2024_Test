@@ -7,35 +7,36 @@ public class PlatformSpawner : MonoBehaviour
 {
     public GameObject prefab;
     public float targetTime = 10.0f;
-
+    public float timeLimit = 5f;
+    GameObject floorInstance;
     void Start()
     {
-        prefab = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        prefab.transform.position = new Vector3(0, -1.5f, 0);
-        prefab.transform.localScale = new Vector3(9, 0.5f, 9);
-        Material newMat = Resources.Load("Materials/Green", typeof(Material)) as Material;
-        prefab.GetComponent<Renderer>().material = newMat;
+        prefab = Resources.Load("Floor", typeof(GameObject)) as GameObject;
+        Vector3 position = new Vector3(0, -1.5f, 0);
+        floorInstance = Instantiate(prefab, position, Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
         print(targetTime);
-        if (targetTime <= 0.0f)
+        if (targetTime <= timeLimit && targetTime > 0.0f)
+        {
+
+        }
+        else if (targetTime <= 0.0f)
         {
             timerEnded();
         }
-        else
-        {
-            targetTime -= Time.deltaTime;
-        }
+
+        targetTime -= Time.deltaTime;
+
 
     }
 
     void timerEnded()
     {
-        prefab = null;
-        Destroy(prefab);
+        Destroy(gameObject);
     }
 
 }
