@@ -27,6 +27,7 @@ public class TimedSelfDestruct : MonoBehaviour
     void Update()
     {
         //print(lifeTime);
+        
         if (!hasReproduced && lifeTime <= reproduceTime && lifeTime > 0.0f)
         {
             reproduce();
@@ -67,7 +68,6 @@ public class TimedSelfDestruct : MonoBehaviour
     }
     void timerEnded()
     {
-        gameState.score++;
         if(gameState.positions.Count > 2) gameState.positions.Dequeue();
         Destroy(gameObject);
     }

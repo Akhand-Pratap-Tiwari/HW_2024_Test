@@ -25,22 +25,23 @@ public class TopDownMovement : MonoBehaviour
     private PlayerControls playerControls;
     private PlayerInput playerInput;
 
+
+   
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         playerControls = new PlayerControls();
         playerInput = GetComponent<PlayerInput>();
-        gameState = GameObject.FindWithTag("GlobalGameState").GetComponent<GlobalGameState>();
-    }
-
-    private void OnEnable()
-    {
-        playerControls.Enable();
+        gameState = GameObject.FindWithTag("GlobalGameState").GetComponent<GlobalGameState>();    
     }
 
     private void OnDisable()
     {
         playerControls.Disable();
+    }
+    private void OnEnable()
+    {
+        playerControls.Enable();
     }
     // Start is called before the first frame update
     void Start()

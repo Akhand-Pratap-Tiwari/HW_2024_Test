@@ -63,6 +63,6 @@ public class GlobalGameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       print("Score: " + score);
     }
 }
