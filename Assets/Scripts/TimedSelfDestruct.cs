@@ -14,7 +14,7 @@ public class TimedSelfDestruct : MonoBehaviour
     public float reproduceTime = 4f;
     public bool hasReproduced = false;
     GlobalGameState gameState;
-
+    TextMeshPro timerDisplay;
     void Start()
     {
         gameState = GameObject.FindWithTag("GlobalGameState").GetComponent<GlobalGameState>();
@@ -23,14 +23,15 @@ public class TimedSelfDestruct : MonoBehaviour
         float maxTime = gameState.game_data.pulpit_data.max_pulpit_destroy_time;
         lifeTime = UnityEngine.Random.Range(minTime, maxTime);
         reproduceTime = lifeTime - gameState.game_data.pulpit_data.pulpit_spawn_time;
+        timerDisplay = GetComponentInChildren<TextMeshPro>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //print(lifeTime);
-        TextMeshPro child = GetComponentInChildren<TextMeshPro>();
-        child.text = lifeTime.ToString();
+
+        timerDisplay.text = lifeTime.ToString();
         if (!hasReproduced && lifeTime <= reproduceTime && lifeTime > 0.0f)
         {
             reproduce();

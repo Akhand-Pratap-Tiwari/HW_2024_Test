@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,16 +26,28 @@ public class TopDownMovement : MonoBehaviour
     private PlayerControls playerControls;
     private PlayerInput playerInput;
 
-
+    private TextMeshPro scoreText;
    
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         playerControls = new PlayerControls();
         playerInput = GetComponent<PlayerInput>();
-        gameState = GameObject.FindWithTag("GlobalGameState").GetComponent<GlobalGameState>();    
+        gameState = GameObject.FindWithTag("GlobalGameState").GetComponent<GlobalGameState>();
+        scoreText = GetComponentInChildren<TextMeshPro>();
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        print(other.gameObject.tag);
+        if (other.gameObject.tag.Equals("ScoreVolume"))
+        {
+            Destroy(other.gameObject);
+            gameState.score++;
+            scoreText.text = "Score: " + (gameState.score-1).ToString();
+        }
+        //scoreText.text = "Score: " + gameState.score.ToString();
 
+    }
     private void OnDisable()
     {
         playerControls.Disable();
@@ -47,6 +60,7 @@ public class TopDownMovement : MonoBehaviour
     void Start()
     {
         playerSpeed = gameState.game_data.player_data.speed;
+        scoreText.text = "Score: 0";
     }
 
     // Update is called once per frame
