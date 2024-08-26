@@ -3799,6 +3799,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameStateHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 5884153735467613327, guid: 0aa8a47623b7a2d43a29099c07642c35, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6908717284009094819, guid: 0aa8a47623b7a2d43a29099c07642c35, type: 3}
       propertyPath: midGamePause
       value: 
