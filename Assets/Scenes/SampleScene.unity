@@ -745,8 +745,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0013c168f66bbaf489f1728f7ce56145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityValue: -9.81
-  controllerDeadZone: 0.1
 --- !u!114 &1566055701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,7 +1104,8 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2121241902814589618, guid: 65bebcfc88fe48d4ab6087e1199a1e22, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

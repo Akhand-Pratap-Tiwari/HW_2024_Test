@@ -10,24 +10,17 @@ using UnityEngine.InputSystem;
 
 public class TopDownMovement : MonoBehaviour
 {
-    
-
     private float playerSpeed = 5f;
-    [SerializeField] private float gravityValue = -9.81f;
-    [SerializeField] private float controllerDeadZone= 0.1f;
-    
-    GlobalGameState gameState;
-
+    private float gravityValue = -9.81f;
+    private float controllerDeadZone = 0.1f;
+    private GlobalGameState gameState;
     private CharacterController controller;
-
+    private PlayerControls playerControls;
+    private PlayerInput playerInput;
+    private TextMeshPro scoreText;
     private Vector2 movement;
     private Vector3 playerVelocity;
 
-    private PlayerControls playerControls;
-    private PlayerInput playerInput;
-
-    private TextMeshPro scoreText;
-   
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -43,9 +36,8 @@ public class TopDownMovement : MonoBehaviour
         {
             Destroy(other.gameObject);
             gameState.score++;
-            scoreText.text = "Score: " + (gameState.score-1).ToString();
+            scoreText.text = "Score: " + (gameState.score - 1).ToString();
         }
-        //scoreText.text = "Score: " + gameState.score.ToString();
 
     }
     private void OnDisable()

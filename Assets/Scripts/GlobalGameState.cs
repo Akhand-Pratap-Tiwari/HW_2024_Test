@@ -45,6 +45,9 @@ public class GlobalGameState : MonoBehaviour
             game_data = JsonUtility.FromJson<GameData>(jsonString);
 
             // Use the loaded data (for example, print it to the console)
+            // Debug Printing is necessary here as file loading caused error on first
+            // time opening. Cause unknown. After that error never happened again.
+            // Might help if future if it ever happens.
             print("Player Speed: " + game_data.player_data.speed);
             print("Min Pulpit Destroy Time: " + game_data.pulpit_data.min_pulpit_destroy_time);
             print("Max Pulpit Destroy Time: " + game_data.pulpit_data.max_pulpit_destroy_time);
@@ -63,6 +66,6 @@ public class GlobalGameState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       //print("Score: " + score);
+
     }
 }

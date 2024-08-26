@@ -10,11 +10,12 @@ using static Unity.VisualScripting.Metadata;
 
 public class TimedSelfDestruct : MonoBehaviour
 {
-    public float lifeTime = 10f;
-    public float reproduceTime = 4f;
-    public bool hasReproduced = false;
-    GlobalGameState gameState;
-    TextMeshPro timerDisplay;
+    private float lifeTime = 10f;
+    private float reproduceTime = 4f;
+    private bool hasReproduced = false;
+    private GlobalGameState gameState;
+    private TextMeshPro timerDisplay;
+
     void Start()
     {
         gameState = GameObject.FindWithTag("GlobalGameState").GetComponent<GlobalGameState>();
@@ -29,8 +30,6 @@ public class TimedSelfDestruct : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //print(lifeTime);
-
         timerDisplay.text = lifeTime.ToString();
         if (!hasReproduced && lifeTime <= reproduceTime && lifeTime > 0.0f)
         {
