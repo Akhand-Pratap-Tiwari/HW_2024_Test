@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 
 public class TopDownMovement : MonoBehaviour
 {
+    GlobalGameState gameState = GameObject.FindWithTag("GlobalGameState").GetComponent<GlobalGameState>();
 
     [SerializeField] private float playerSpeed = 5f;
     [SerializeField] private float gravityValue = -9.81f;
@@ -26,7 +27,8 @@ public class TopDownMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         playerControls = new PlayerControls();
-        playerInput = GetComponent<PlayerInput>();  
+        playerInput = GetComponent<PlayerInput>();
+        playerSpeed = gameState.game_data.player_data.speed;
     }
 
     private void OnEnable()

@@ -32,7 +32,7 @@ public class GlobalGameState : MonoBehaviour
     public Queue<Vector3> positions = new Queue<Vector3>();
     public GameData game_data;
     // Start is called before the first frame update
-    void loadData() {
+    void loadGameData() {
         string path = Path.Combine("Assets/Resources/doofusDiary.json");
         print(path);
 
@@ -57,7 +57,7 @@ public class GlobalGameState : MonoBehaviour
     }
     void Start()
     {
-        loadData();
+        loadGameData();
     }
 
     // Update is called once per frame
