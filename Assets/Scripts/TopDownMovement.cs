@@ -20,6 +20,7 @@ public class TopDownMovement : MonoBehaviour
     private TextMeshPro scoreText;
     private Vector2 movement;
     private Vector3 playerVelocity;
+    public GameOverScreen gameOverScreen;
 
     private void Awake()
     {
@@ -28,10 +29,10 @@ public class TopDownMovement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         gameState = GameObject.FindWithTag("GlobalGameState").GetComponent<GlobalGameState>();
         scoreText = GetComponentInChildren<TextMeshPro>();
+        //gameOverScreen = new GameOverScreen();
     }
     private void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject.tag);
         if (other.gameObject.tag.Equals("ScoreVolume"))
         {
             Destroy(other.gameObject);
@@ -60,6 +61,11 @@ public class TopDownMovement : MonoBehaviour
     {
         HandleInput();
         HandleMovement();
+        float y = gameObject.transform.position.y;
+        if(y < -10)
+        {
+            gameOverScreen.Setup(gameState.score);
+        }
     }
     void HandleInput()
     {

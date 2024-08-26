@@ -120,9 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b780a70b0cc322248b209e132c19fa90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 10
-  reproduceTime: 5
-  hasReproduced: 0
 --- !u!1 &2559160397866207069
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,8 +228,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -306,7 +303,6 @@ GameObject:
   - component: {fileID: 1739870530065533500}
   - component: {fileID: 495323994564281918}
   - component: {fileID: 5346915517379385285}
-  - component: {fileID: 2121241902814589618}
   m_Layer: 0
   m_Name: ScoreVolume
   m_TagString: ScoreVolume
@@ -400,15 +396,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 1, z: 1.0000001}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2121241902814589618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4872340940831077889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 445b12ef3c9706a44a2fbe50e3baf9f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
