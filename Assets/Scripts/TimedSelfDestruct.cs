@@ -9,11 +9,15 @@ using UnityEngine.UIElements;
 public class TimedSelfDestruct : MonoBehaviour
 {
     public float lifeTime = 10f;
-    public float reproduceTime = 5f;
+    public float reproduceTime = 4f;
     public bool hasReproduced = false;
-    // Start is called before the first frame update
+    GlobalGameState gameState;
+
     void Start()
     {
+        gameState = GameObject.FindWithTag("GlobalGameState").GetComponent<GlobalGameState>();
+        gameState.positions.Enqueue(gameObject.transform.position);
+    
     }
 
     // Update is called once per frame
@@ -50,27 +54,18 @@ public class TimedSelfDestruct : MonoBehaviour
         Vector3 newPos;
         int deltaX = 0;
         int deltaZ = 0;
-        GameObject[] floorsWithTag = GameObject.FindGameObjectsWithTag("SelfDestructingFloor");
-        List<Vector3> positions = new List<Vector3>();
-        foreach (GameObject selfDesFloor in floorsWithTag)
-        {
-            positions.Add(selfDesFloor.transform.position);
-            print("Position: " + selfDesFloor.transform.position);
-        }
-        //print(positions[0].x + positions[0].x + positions[0].x + positions[0].x + );
         do {
-            deltaX = 0;
-            deltaZ = 0;
             int[] deltas = getRandomDeltas();
             deltaX = deltas[0] * 9;
             deltaZ = deltas[1] * 9;
             newPos = new Vector3(currPos.x + deltaX, currPos.y, currPos.z + deltaZ);
-        } while (positions.Contains(newPos));
-        print(newPos.x + " " + newPos.z);
+        } while (gameState.positions.Contains(newPos));
         Instantiate(Resources.Load("TimedSelfDestructFloor", typeof(GameObject)) as GameObject, newPos, Quaternion.identity);
     }
     void timerEnded()
     {
+        gameState.score++;
+        if(gameState.positions.Count > 2) gameState.positions.Dequeue();
         Destroy(gameObject);
     }
 }
