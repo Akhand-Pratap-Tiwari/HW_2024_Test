@@ -44,7 +44,8 @@ public class GlobalGameState : MonoBehaviour
 
     // Will be used to read and load game data into game_data variable
     void loadGameData() {
-        string path = Path.Combine("Assets/Resources/doofusDiary.json");
+        
+        string path = Path.Combine(Application.streamingAssetsPath, "doofusDiary.json");
         print(path);
 
         if (File.Exists(path))
@@ -66,13 +67,15 @@ public class GlobalGameState : MonoBehaviour
         }
         else
         {
-            print("Cannot find gameData.json file!");
+            Debug.LogError("Cannot find gameData.json file!");
         }
     }
 
     // Once the game starts first thing is to load the game data.
-    void Start()
+    void Awake()
     {
+        //Debug.developerConsoleEnabled = true;
+        //Debug.developerConsoleVisible = true;
         loadGameData();
     }
 

@@ -19,7 +19,7 @@ public class TimedSelfDestruct : MonoBehaviour
 
     // Visble & editable in Inpector
     // Hold global game state
-    public GlobalGameState gameState;
+    private GlobalGameState gameState;
 
     void Start()
     {
